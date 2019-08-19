@@ -79,4 +79,5 @@ nnoremap <F9> :%s/\s\+$//e<CR>
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
+Plug 'ionel-badisor/vim-bitbake'
 call plug#end()
