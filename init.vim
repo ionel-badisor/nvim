@@ -1,5 +1,29 @@
 "CONFIGURATION ---------------------------------------------------------------
 
+"PLUGINS----------------------------------------------------------------------
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+Plug 'ionel-badisor/vim-bitbake'
+Plug 'tpope/vim-unimpaired'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+call plug#end()
+
+"COLORS-----------------------------------------------------------------------
+set termguicolors
+
+"gruvbox---------------------
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_italic = 1
+let g:gruvbox_italicize_comments = 1
+
+
+"ariline---------------------
+let g:airline_powerline_fonts = 1
+
 "Syntax highlight-------------------------------------------------------------
 syntax on
 set foldmethod=syntax
@@ -37,6 +61,7 @@ nmap <leader>` :set list!<CR>
 "set listchars=nbsp:.,tab:▸\ ,eol:¬,space:·
 ":set listchars+=space:␣
 ":set listchars+=space:·
+set fileformats=unix
 set showbreak=↪\
 set listchars=tab:→\ ,eol:↲,space:·,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
@@ -76,8 +101,3 @@ endfunction
 nnoremap <leader>rtw :%s/\s\+$//e<CR>
 nnoremap <F9> :%s/\s\+$//e<CR>
 
-call plug#begin('~/.local/share/nvim/plugged')
-Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdtree'
-Plug 'ionel-badisor/vim-bitbake'
-call plug#end()
