@@ -3,18 +3,34 @@
 "PLUGINS----------------------------------------------------------------------
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
 Plug 'ionel-badisor/vim-bitbake'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'morhetz/gruvbox'
+"Plug 'ayu-theme/ayu-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+Plug 'vifm/vifm'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+
 call plug#end()
 
 "COLORS-----------------------------------------------------------------------
 set termguicolors
+
+"ayu--------------------------
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+"let ayucolor="dark"   " for dark version of theme
+"colorscheme ayu
 
 "gruvbox---------------------
 colorscheme gruvbox
@@ -43,10 +59,18 @@ nmap <M-o> k
 nmap <M-h> l
 
 "Tab key (only spaces)----------------------------------------------
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-"set expandtab
+set tabstop=4       " The width of a TAB is set to 4.
+                    " Still it is a \t. It is just that
+                    " Vim will interpret it to be having
+                    " a width of 4.
+
+set shiftwidth=4    " Indents will have a width of 4
+
+set softtabstop=4   " Sets the number of columns for a TAB
+
+"set expandtab       " Expand TABs to spaces
+"set smarttab
+
 
 "Line number--------------------------------------------------------
 "set nu "line number visible
@@ -102,4 +126,11 @@ endfunction
 "remove trailing-withespaces
 nnoremap <leader>rtw :%s/\s\+$//e<CR>
 nnoremap <F9> :%s/\s\+$//e<CR>
+
+" LSP
+
+lua require('lspconfig').cmake.setup{}
+lua require('lspconfig').ccls.setup{}
+lua require('lspconfig').bashls.setup{}
+
 
