@@ -13,7 +13,7 @@ Issue command and fix the issues
 
 ### Options 
 
-Doc `:help` options or `:help option-name`
+Doc `:help options` or `:help option-name`
 
 
 
