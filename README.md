@@ -26,3 +26,7 @@ Access Key:
 	cli: `:registers`
 	Normal: `"registerIdCharacter` (example `"3p` => inserts content from the third numbered register
 	Insert: `Ctrl-r registerIdCharacter` (example `Ctrl-r-3` inserts content from the third numberd register
+
+### Vim key bindings evreywhere
+
+https://github.com/erikw/vim-keybindings-everywhere-the-ultimate-list/blob/main/README.md
