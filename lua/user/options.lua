@@ -44,4 +44,4 @@ o.guifont = "monospace:h17"		-- set font
 o.iskeyword:append('-')			-- word containing '-' is not considered two words by 'w' selector (not'W')
 
 o.spelllang = "en_us"		-- see `:help spelllang`
-o.spell = true				-- enable spell checking
+-- o.spell = true				-- enable/disable spell checking
