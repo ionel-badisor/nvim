@@ -10,11 +10,21 @@ local visual_block_mode = "x"
 local term_mode = "t"
 local command_mode = "c"
 
--- Remap space as leader key
+-- Visual
+-- Stay in indent mode on visual_mode
+keymap(visual_mode, "<", "<gv", opts)
+keymap(visual_mode, ">", ">gv", opts)
 
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- Move text up and down visual_mode
+keymap(visual_mode, "<C-k>", ":m '<-2<CR>gv=gv", opts)
+keymap(visual_mode, "<C-j>", ":m '>+1<CR>gv=gv", opts)
+
+-- Move text up and down visual_block_mode
+keymap("x", "<C-j>", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "<C-k>", ":move '<-2<CR>gv-gv", opts)
+--keymap("", "<C-j>", "<Nop>", opts)
+-- void copy in buffer when pasting over
+keymap(visual_mode, "p", '"_dP', opts)
 
 -- Use ALT+{h,j,k,l} to move windows see `:help terminal` for reference
 keymap(normal_mode, "<A-h>", "<C-w>h", opts)
@@ -43,6 +53,21 @@ keymap(insert_mode, "<A-Down>", "<C-\\><C-N><C-w>j", opts)
 keymap(insert_mode, "<A-Up>", "<C-\\><C-N><C-w>k", opts)
 keymap(insert_mode, "<A-Right>", "<C-\\><C-N><C-w>l", opts)
 
+-- Resize window
+keymap(normal_mode, "<C-A-Left>", ":vertical resize -2<CR>", opts)
+keymap(normal_mode, "<C-A-Down>", ":resize -2<CR>", opts)
+keymap(normal_mode, "<C-A-Up>", ":resize +2<CR>", opts)
+keymap(normal_mode, "<C-A-Right>", ":vertical resize +2<CR>", opts)
+keymap(normal_mode, "<C-A-h>", ":vertical resize -2<CR>", opts)
+keymap(normal_mode, "<C-A-j>", ":resize -2<CR>", opts)
+keymap(normal_mode, "<C-A-k>", ":resize +2<CR>", opts)
+keymap(normal_mode, "<C-A-l>", ":vertical resize +2<CR>", opts)
+
+-- Remap space as leader key
+keymap("", "<Space>", "<Nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+--
 -- open Ntree on <leader>t
 keymap(normal_mode, "<leader>t", ":Lex 20<CR>", opts)
 -- show/hide special character 
@@ -56,13 +81,3 @@ keymap(normal_mode, "<leader>l", ":setlocal spell!<CR>", opts) --toggle spell ch
 --keymap(normal_mode, "<leader>le", ":setlocal spell! spelllang=en_us<CR>", opts) 
 --keymap(normal_mode, "<leader>lr", ":setlocal spell! spelllang=ro_ro<CR>", opts)
 
--- Resize window
-keymap(normal_mode, "<C-A-Left>", ":vertical resize -2<CR>", opts)
-keymap(normal_mode, "<C-A-Down>", ":resize -2<CR>", opts)
-keymap(normal_mode, "<C-A-Up>", ":resize +2<CR>", opts)
-keymap(normal_mode, "<C-A-Right>", ":vertical resize +2<CR>", opts)
-
-keymap(normal_mode, "<C-A-h>", ":vertical resize -2<CR>", opts)
-keymap(normal_mode, "<C-A-j>", ":resize -2<CR>", opts)
-keymap(normal_mode, "<C-A-k>", ":resize +2<CR>", opts)
-keymap(normal_mode, "<C-A-l>", ":vertical resize +2<CR>", opts)
