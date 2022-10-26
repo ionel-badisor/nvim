@@ -8,9 +8,11 @@ Plug 'ionel-badisor/vim-bitbake'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 
 "COLORS-----------------------------------------------------------------------
@@ -22,6 +24,10 @@ let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_comments = 1
 
+"firenvim----------------------------------------------------------------------
+if exists('g:started_by_firenvim')
+  packadd firenvim
+endif
 
 "ariline---------------------
 let g:airline_powerline_fonts = 1
